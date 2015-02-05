@@ -25,6 +25,14 @@
             this.insert = this.options.insert || this.insert;
         }
 
+        if ($.isFunction(this.options.render) ) {
+            this.render = this.options.render;
+        } else if (typeof this.options.render == 'string' && /^new Function/.test(this.options.render)) {
+            this.render = eval(this.options.render);
+        } else {
+            this.render = this.options.render || this.render;
+        }
+
         this.highlighter = this.options.highlighter || this.highlighter;
 
         this.query = '';
