@@ -10,7 +10,8 @@
             source: [],
             delay: 500,
             queryBy: 'name',
-            items: 10
+            items: 10,
+            inputLength: 3
         }, options);
 
         this.matcher = this.options.matcher || this.matcher;
@@ -169,6 +170,10 @@
         lookup: function () {
             this.query = $.trim($(this.editor.getBody()).find("#autocomplete-searchtext").text()).replace('\ufeff', '');
 
+            if (this.query.length < this.options.inputLength) {
+                return;
+            }
+            
             if (this.$dropdown === undefined) {
                 this.show();
             }
@@ -184,7 +189,7 @@
                 }
 
                 // Added delimiter parameter as last argument for backwards compatibility.
-                var items = $.isFunction(source) ? source(this.query, $.proxy(this.process, this), this.options.delimiter) : source;
+                var items = $.isFunction(source) ? source(this.query, $.proxy(this.process, this), this.options.items, this.options.delimiter) : source;
                 
                 if (items) {
                     this.process(items);
