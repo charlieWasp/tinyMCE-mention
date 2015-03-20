@@ -34,7 +34,7 @@ Add configuration options for the mention plugin. `source` is the only required 
 ```javascript
 mentions: {
     source: [
-        { name: 'Tyra Porcelli' }, 
+        { name: 'Tyra Porcelli' },
         { name: 'Brigid Reddish' },
         { name: 'Ashely Buckler' },
         { name: 'Teddy Whelan' }
@@ -52,7 +52,7 @@ The source parameter can be configured as an array or a function.
 
 ```javascript
 source: [
-    { name: 'Tyra Porcelli' }, 
+    { name: 'Tyra Porcelli' },
     { name: 'Brigid Reddish' },
     { name: 'Ashely Buckler' },
     { name: 'Teddy Whelan' }
@@ -173,6 +173,11 @@ renderDropdown: function() {
 }
 ```
 
+###inputLength
+
+The minimum number of characters a user must type before a search is performed
+
+**Default**: `3`
 ##License
 
 MIT licensed
